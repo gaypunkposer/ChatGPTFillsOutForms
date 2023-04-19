@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  gluetun_gpt:
+    image: qmcgaw/gluetun
+    container_name: gluetun_gpt
+    cap_add:
+      - NET_ADMIN
+    network_mode: bridge
+    ports:
+      - 8000:8000
+    environment:
+      - VPNSP=<YOUR VPN PROVIDER>
+      - OPENVPN_USER=<YOUR VPN USER NAME>
+      - OPENVPN_PASSWORD=<YOUR VPN PASSWORD>
+      - SERVER_REGIONS=United States
+    restart: unless-stopped
+  bot:
+    image: gaypunkposer/chatgpt-form-filler
+    depends_on: ["gluetun_gpt"]
+    network_mode: "container:gluetun_gpt"
+    environment:
+      - OPENAI_API_KEY=<API KEY>
+      - ENSURE_GLUETUN_VPN=TRUE
+    restart: unless-stopped

@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "openai": "^3.2.1",
+    "puppeteer": "^19.9.1"
+  },
+  "name": "@form/chatgpt-to-form-filling",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "run": "node main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
